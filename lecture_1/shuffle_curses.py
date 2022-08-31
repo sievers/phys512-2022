@@ -80,7 +80,7 @@ def main(stdscr,dt=0.3):
                     stdscr.addstr(9,0,'f - print file path on disk')
                 time.sleep(dt)
             fnum=fnum+1
-
-stdscr = curses.initscr()
-wrapper(main)
+if __name__=='__main__':
+    stdscr = curses.initscr()
+    wrapper(main)
 

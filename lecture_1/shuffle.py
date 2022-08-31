@@ -1,6 +1,5 @@
 import sounddevice as sd
-import time,glob,numpy,random,keyboard
-import subprocess
+import time,glob,numpy,random,keyboard,subprocess
 
 def get_key(mystr,key):
     i1=mystr.find(key)
@@ -38,25 +37,9 @@ if __name__=='__main__':
     dr='/Users/sievers/Music/old/ipod_touch/'
     fnames=glob.glob(dr + '/*/*.m4a') #get filenames from a directory
     random.shuffle(fnames) #randomly reorder the file names
-    while True:
-        try:
-            if keyboard.is_pressed('q'):
-                print('pressed q.')
-                break
-        except:
-            break
-    assert(1==0)
     for fname in fnames: #loop over filenames in music library
         try:
             mylen=play_song(fname)  #play the song, and learn how long it is
             print('mylen is ',mylen)
-            nn=int(numpy.ceil(mylen))
-            for ii in range(nn):
-                time.sleep(1)
-            #time.sleep(mylen)
-            #for i in range(10*mylen):
-            #    time.sleep(0.1)       #wait until the song should have finished
         except:  #when we get a ctrl-c, we'll jump here.  this just
             pass    #goes to next loop iteration, which overwrites current song
-
-
