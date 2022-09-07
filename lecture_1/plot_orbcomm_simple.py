@@ -20,9 +20,9 @@ def ctime2mjd(tt=None,type='Dublin'):
     jd=tt/86400+2440587.5
     return jd-2415020
 
-#tles=read_latest_tles('https://celestrak.com/NORAD/elements/starlink.txt')
+tles=read_latest_tles('https://celestrak.com/NORAD/elements/starlink.txt')
 #tles=read_latest_tles('https://celestrak.com/NORAD/elements/gps-ops.txt')
-tles=read_latest_tles()
+#tles=read_latest_tles()
 
 lat=np.empty(len(tles))
 lon=np.empty(len(tles))
