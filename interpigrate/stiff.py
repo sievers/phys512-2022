@@ -18,9 +18,11 @@ t1=time.time();
 ans_rk4=integrate.solve_ivp(fun,[x0,x1],y0);
 t2=time.time();
 print('took ',ans_rk4.nfev,' evaluations and ',t2-t1,' seconds to solve with RK4.')
+
 t1=time.time()
 ans_stiff=integrate.solve_ivp(fun,[x0,x1],y0,method='Radau')
 t2=time.time()
+
 print('took ',ans_stiff.nfev,' evaluations and ',t2-t1,' seconds to solve implicitly')
 print('final values were ',ans_rk4.y[0,-1],' and ',ans_stiff.y[0,-1],' with truth ',np.exp(-1*(x1-x0)))
 
