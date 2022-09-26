@@ -14,13 +14,13 @@ A=np.empty([len(x),ord])
 for i in range(ord):
     A[:,i]=x**i
 y_true=A@m
-#y=y_true+np.random.randn(len(x))
+y=y_true+np.random.randn(len(x))
 
 lhs=A.T@A
 rhs=A.T@y
 e,v=np.linalg.eigh(lhs)
 print('ATA condition is ',e.min()/e.max())
-mfit=np.linalg.inv(lhs)@rhs
+mfit=np.linalg.pinv(lhs,rcond=1e-12)@rhs
 pred=A@mfit
 
 print('squared residual is ',np.sum((pred-y)**2))
