@@ -71,17 +71,24 @@ def process_chain(chain,chisq,T=1.0):
     #density in chain is exp(-0.5*chi^2/T), but
     #we wanted it to be exp(-0.5*chi^2)
     #so, we want to downweight by ratio, which is
-    #exp(-0.5*chi^2*(1-1/T))
+    #exp(-0.5*chi^2*(1-1/T)).  We'll calculate the mean
+    #and standard deviation of the chain, but will also
+    #return the weights so you could calculate whatever you want
 
-    wt=np.exp(-0.5*dchi*(1-1/T))
+    wt=np.exp(-0.5*dchi*(1-1/T)) #the magic line that importance samples
+
+    #calculate the weighted sum of the chain and the chain squared
     npar=chain.shape[1]
     tot=np.zeros(npar)
     totsqr=np.zeros(npar)
     for i in range(npar):
         tot[i]=np.sum(wt*chain[:,i])
         totsqr[i]=np.sum(wt*chain[:,i]**2)
+    #divide by sum or weights
     mean=tot/np.sum(wt)
     meansqr=totsqr/np.sum(wt)
+
+    #variance is <x^2>-<x>^2
     var=meansqr-mean**2
     return mean,np.sqrt(var),wt
     
