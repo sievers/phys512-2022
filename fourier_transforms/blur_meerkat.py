@@ -21,14 +21,14 @@ def get_smooth_kernel(shape,npx):
     xexp=np.exp(-0.5*xvec**2/npx**2)
     yexp=np.exp(-0.5*yvec**2/npx**2)
     kernel=np.outer(xexp,yexp)
-    return kernel
+    return kernel/kernel.sum()
 
 plt.ion()
 myim=plt.imread('meerkat_small.png')
 #myim=plt.imread('30973.jpg')
 
-#red=myim[:,:,0]
-red=make_chessboard(16,16)
+red=myim[:,:,0]
+#red=make_chessboard(16,16)
 
 kernel=get_smooth_kernel(red.shape,1.5)
 redft=np.fft.rfft2(red)
