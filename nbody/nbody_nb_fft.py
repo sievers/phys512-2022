@@ -193,12 +193,12 @@ class particles:
 
 
 
-parts=particles(npart=10000000,soft=2,periodic=False)
+parts=particles(npart=10000000,soft=2,periodic=True)
 
 #parts.ics_gauss()
-parts.ics_poisson()
+#parts.ics_poisson()
 #parts.ics_powlaw(ind=-2)
-#parts.ics_2gauss()
+parts.ics_2gauss()
 parts.get_kernel()
 
 plt.ion()
