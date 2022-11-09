@@ -12,6 +12,7 @@ cosy=np.cos(y)
 p=np.exp(-0.5*tany**2)/cosy**2
 
 
+
 plt.ion()
 plt.figure(1)
 plt.clf()
@@ -19,12 +20,14 @@ plt.plot(y,p)
 plt.show()
 plt.savefig('arctan_gauss.png')
 
+
 n=10000000
 yy=np.pi*(np.random.rand(n)-0.5)
-print(yy.min(),yy.max())
+
 myp=np.exp(-0.5*np.tan(yy)**2)/np.cos(yy)**2
 fac=1.01*p.max()
 accept=(np.random.rand(n)*fac)<myp
+print('accept fraction is ',np.mean(accept))
 y_use=yy[accept]
 x_use=np.tan(y_use)
 aa,bb=np.histogram(x_use,np.linspace(-4,4,41))
