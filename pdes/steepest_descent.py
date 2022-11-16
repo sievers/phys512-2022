@@ -21,20 +21,24 @@ b=np.random.randn(n)
 x=0*b
 niter=35
 r=b-A@x
-p=r.copy()
-r_old=r
+rtr=r@r
 #iterate to solve the matrix equation
 for i in range(niter):
-    r=b-A@x    
     Ar=A@r
-    alpha=r@r/(r@Ar)
-    x=x+alpha*r
-    mydot=r_old@r
-    r_old=r
-    print('r squared is ',r@r,mydot)
 
+    rar=r@Ar
+    a=rtr/rar
+    x=x+a*r
+    r=r-a*Ar
+    rtr=r@r
+    print('r squared is ',rtr)#,mydot)
+    
 #print out the scatter of the residual.  Note that Ax-b should be sitting in
 #r so this ought to be the same (modulo the scaling by the scatter
 #of b), but roundoff error could make things different, so
 #starting fresh is sometimes a good sanity check.
+
+r_final=b-A@x
+mysig=np.std(r_final-r)
+print('scatter of iterated r vs. direct is ',mysig)
 print('fractional scatter of answer is ',np.std(A@x-b)/np.std(b))
