@@ -62,7 +62,7 @@ class Fluid:
             self.rhoE[0]=self.rhoE[1]
             self.rhoE[-1]=self.rhoE[-2]
             return    
-        assert(1==0)  #why did we do this?  Tutorial problem 1
+        assert(1==0)  #why did we do this? 
     def do_eos(self):
         #self.get_velocity() #let's assume velocity has already been calculated
         thermal=self.rhoE-self.rho*0.5*self.v**2
@@ -98,7 +98,7 @@ class Fluid:
         self.gradp=dp
         self.gradrhoE=drhoE
     def get_timestep(self,dt=0.1):
-        #tutorial problem 3 - what should this timestep actually be from CFL?
+        #what should this timestep actually be from CFL?
         return 0.5*dt  #*self.dx
     def take_step(self):
         #before we can do anything else, get the boundary gonditions

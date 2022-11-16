@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 from matplotlib import pyplot as plt
 
 osamp=100
@@ -8,14 +8,14 @@ def update_vec_lax(vec,deriv,dt,eps=0.2):
 
 class Fluid:
     def __init__(self,npix=200,gamma=5.0/3.0,bc_type='periodic'):
-        self.rho=numpy.zeros(npix)
-        self.p=numpy.zeros(npix)
-        self.v=numpy.zeros(npix)
-        self.rhoE=numpy.zeros(npix)
-        self.P=numpy.zeros(npix)
-        self.gradrho=numpy.zeros(npix)
-        self.gradp=numpy.zeros(npix)
-        self.gradrhoE=numpy.zeros(npix)
+        self.rho=np.zeros(npix)
+        self.p=np.zeros(npix)
+        self.v=np.zeros(npix)
+        self.rhoE=np.zeros(npix)
+        self.P=np.zeros(npix)
+        self.gradrho=np.zeros(npix)
+        self.gradp=np.zeros(npix)
+        self.gradrhoE=np.zeros(npix)
         self.gamma=gamma
         self.bc_type=bc_type
         self.n=npix
