@@ -184,5 +184,6 @@ if __name__=='__main__':
         #plt.clf()
         #plt.plot(fluid.rho)
         #plt.axis([0,len(fluid.rho),0,1.2])
-        h.set_ydata(fluid.rho)
+        #h.set_ydata(fluid.rho)
+        h.set_ydata(fluid.rhoE)
         plt.pause(0.001)
