@@ -35,6 +35,6 @@ print('numpy sum is ',np.sum(mat))
 niter=100
 for i in range(niter):
     t1=time.time()
-    tot=sum_arr_cols(mat)
+    tot=sum_arr_rows(mat)
     t2=time.time()
     print('took ',t2-t1,' with answer ',tot)
